@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+	<title>RiskAssess | Heart Failure Prediction</title>
+</head>
+<style>
+	body{
+    background-color: rgba(204, 188, 203, 0.705);
+}
+form{
+  width: fit-content;
+  border: 5px solid rgba(12, 12, 12, 0.915);
+  padding: 20px;
+  margin: 20px;
+  justify-content: center; 
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 40px;
+ 
+  margin-bottom: 20px;
+  display: grid; /* use grid layout */
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+}
+div.form-group{
+    width: 100%;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+h1{
+    align-content: center;
+    margin-top: 20px;
+    
+}
+h5{
+    margin-top: 1px;
+}
+button{
+    margin-top: 20px;
+}
+.logo {
+    vertical-align: middle;
+    border-style: none;
+    height: 38px;
+}
+</style>
+<body>
+
+	<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#">
+                  <img src="static/img/logo.png" alt="PREDMed Logo" class="logo">
+                    <b class="logo">PREDMed</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/disindex">Disease Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cancer">Breast Cancer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/diabetes">Diabetes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/heart">Heart Disease</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/kidney">Kidney Disease</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/liver">Liver Disease</a>
+                    </li>
+                    <li class="nav-item">
+		                <a class="nav-link" href="#">|</a>
+		            </li>
+                    <li class="nav-item">
+		                <a class="nav-link" href="/logout">Logout</a>
+		            </li>
+                    </ul>
+                </div>
+            </nav>
+    </header><br/><br/>
+    <h1 style="text-align:center;">Heart Failure Prediction</h1>
+    
+    <form action="{{ url_for('predictheart')}}" method="post" class="form-inline">
+        <fieldset>
+          <div class="tabcontent" id="new">
+            <h5 style="text-align:center;">Please enter the patient details</h5>
+             
+              <div class="form-group">
+                
+                <label for="age">Age</label>
+                <input class="form-control" type="number" id="age" name="age" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="anaemia">Anaemia</label>
+                <input class="form-control" type="number" id="anaemia" name="anaemia" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="creatinine_phosphokinase">creatinine phosphokinase</label>
+                <input class="form-control" type="number" id="creatinine_phosphokinase" name="creatinine_phosphokinase" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="diabetes">diabetes</label>
+                <input class="form-control" type="number" id="diabetes" name="diabetes" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="ejection_fraction">ejection_fraction</label>
+                <input class="form-control" type="number" id="ejection_fraction" name="ejection_fraction" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="high_blood_pressure">high_blood_pressure</label>
+                <input class="form-control" type="number" id="high_blood_pressure" name="high_blood_pressure" required="required">
+              </div>
+              <div class="form-group">
+                <label for="platelets">platelets</label>
+                <input class="form-control" type="number" id="platelets" name="platelets" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="serum_creatinine">serum_creatinine</label>
+                <input class="form-control" type="number" id="serum_creatinine" name="serum_creatinine" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="serum_sodium">serum_sodium</label>
+                <input class="form-control" type="number" id="serum_sodium" name="serum_sodium" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="sex">sex</label>
+                <input class="form-control" type="number" id="sex" name="sex" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="smoking">smoking</label>
+                <input class="form-control" type="number" id="smoking" name="smoking" required="required" >
+              </div>
+              <div class="form-group">
+                <label for="time">time</label>
+                <input class="form-control" type="number" id="time" name="time" required="required">
+              </div>
+
+              
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-dark">Predict</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
